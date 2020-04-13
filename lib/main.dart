@@ -3,8 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import 'dart:convert';
 import 'package:pull_to_refresh/pull_to_refresh.dart';
-import 'package:dotenv/dotenv.dart' show load, clean, isEveryDefined, env;
-
+import 'package:dotenv/dotenv.dart' show load, env;
 
 void main() => runApp(MyApp());
 
@@ -28,14 +27,12 @@ class Main extends StatefulWidget {
 }
 
 class _MainState extends State<Main> {
-
   AirResult _result;
 
   Object get error => null;
 
   Future<AirResult> fetchData() async {
-    load();
-    var res = await http.get('https://api.airvisual.com/v2/nearest_city?key=${env['API_KEY']}');
+    var res = await http.get('https://api.airvisual.com/v2/nearest_city?key=b04d4586-a18e-4a87-9c0c-12629b0c1aa3');
     if(res.statusCode==200){
       AirResult result = AirResult.fromJson(json.decode(res.body));
       return result;
@@ -47,8 +44,7 @@ class _MainState extends State<Main> {
   RefreshController _refreshController = RefreshController(initialRefresh: false);
 
   Future<AirResult> _onRefresh() async{
-    load();
-    var res = await http.get('https://api.airvisual.com/v2/nearest_city?key=${env['API_KEY']}');
+    var res = await http.get('https://api.airvisual.com/v2/nearest_city?key=b04d4586-a18e-4a87-9c0c-12629b0c1aa3');
     if(res.statusCode==200){
       AirResult result = AirResult.fromJson(json.decode(res.body));
       await Future.delayed(Duration(milliseconds: 1000));
