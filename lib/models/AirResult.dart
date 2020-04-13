@@ -104,7 +104,7 @@ class Weather {
   int tp;
   int pr;
   int hu;
-  int ws;
+  num ws;
   int wd;
   String ic;
 
