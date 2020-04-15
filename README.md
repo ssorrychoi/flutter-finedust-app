@@ -4,6 +4,8 @@
 
 ---
 
+❌ip주소를 따서 하는 API이므로 실제 핸드폰에서는 실행이 안됨.
+
 api
 
 https://api.airvisual.com
